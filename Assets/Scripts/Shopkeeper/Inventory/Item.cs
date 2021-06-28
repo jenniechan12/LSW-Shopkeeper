@@ -1,39 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Item Class
-public class Item
+// Clothes Database Class uses for XML 
+[XmlRoot("ClothesDB"), System.Serializable]
+public class ClothingsDatabase
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public int Price { get; set; }
+    [XmlArray("Clothes"), XmlArrayItem("Cloth", typeof(Clothes))]
+    public List<Clothes> ClothesDatabaseList;
+
+    public static ClothingsDatabase Load(string path)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(ClothingsDatabase));
+        using (FileStream stream = new FileStream(path, FileMode.Open))
+        {
+            return serializer.Deserialize(stream) as ClothingsDatabase;
+        }
+    }
 }
 
 // Clothes Class
-public enum ClothingType { HAT, TOP, BOTTOM, DRESSES, SHOES, ACCESSORIES, BAGS, OTHER };
+[System.Serializable]
+public enum ClothingType { HAT, TOP, BOTTOM, DRESSES, SHOES, ACCESSORIES, NONE };
 
-public class Clothes : Item
+[System.Serializable]
+public class Clothes
 {
-    public Sprite Icon;
-    public ClothingType Type { get; set; }
+    // [XmlElement("Sprite")]
+    // public Sprite Icon;
+
+    public string Name;
+    public string Description;
+    public int Price;
+    public ClothingType Type;
 
     public Clothes()
     {
-        Icon = null;
+        // Icon = null;
         Name = "White Shirt";
         Description = "Hipster Shirt";
         Price = 10;
         Type = ClothingType.TOP;
     }
 
-    public Clothes(Sprite _sprite, string _name, string _description, int _price, ClothingType _type)
+    public Clothes(string _name, string _description, int _price, ClothingType _type)
     {
-        Icon = _sprite;
+        // Icon = _sprite;
         Name = _name;
         Description = _description;
         Price = _price;
         Type = _type;
+    }
+
+    private ClothingType GetClothingType(string _type)
+    {
+        switch (_type.ToUpper())
+        {
+            case "HAT": return ClothingType.HAT;
+            case "TOP": return ClothingType.TOP;
+            case "BOTTOM": return ClothingType.BOTTOM;
+            case "DRESSES": return ClothingType.DRESSES;
+            case "SHOES": return ClothingType.SHOES;
+            case "ACCESSORIES": return ClothingType.ACCESSORIES;
+            default: return ClothingType.NONE;
+        }
     }
 }

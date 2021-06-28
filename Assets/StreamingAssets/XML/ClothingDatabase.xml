@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClothesDB>
+    <Clothes>
+        <Cloth>
+            <Name>Shirt</Name>
+            <Description></Description>
+            <Price>250</Price>
+            <Sprite>purpleshirt</Sprite>
+            <Type>TOP</Type>
+        </Cloth>
+        <Cloth>
+            <Name>Pant</Name>
+            <Description></Description>
+            <Price>450</Price>
+            <Sprite></Sprite>
+            <Type>BOTTOM</Type>
+        </Cloth>
+        <Cloth>
+            <Name>Dress</Name>
+            <Description></Description>
+            <Price>1000</Price>
+            <Sprite>purpleshirt</Sprite>
+            <Type>DRESSES</Type>
+        </Cloth>
+        <Cloth>
+            <Name>Shoe</Name>
+            <Description></Description>
+            <Price>120</Price>
+            <Sprite>purpleshirt</Sprite>
+            <Type>SHOES</Type>
+        </Cloth>
+    </Clothes>
+</ClothesDB>
