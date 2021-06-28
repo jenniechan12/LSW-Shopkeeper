@@ -2,30 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     public string Name;
     public PlayerGraphics Outfit;
-    public PlayerInventory Invnentory;
+    public PlayerInventory Inventory;
 
-
-    void Awake()
+    public Player()
     {
-
+        Name = "Player1";
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 }
 
 public class PlayerGraphics
@@ -41,4 +27,10 @@ public class PlayerInventory
 {
     public int Currency;
     public List<Clothes> ClothingsBag;
+
+    public PlayerInventory()
+    {
+        Currency = 10000;
+        ClothingsBag = new List<Clothes>();
+    }
 }

@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            player = new Player();
+            player.Inventory = new PlayerInventory();
+            player.Outfit = new PlayerGraphics();
         }
 
         else if (instance != this)

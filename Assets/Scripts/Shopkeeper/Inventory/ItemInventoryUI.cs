@@ -67,4 +67,9 @@ public class ItemInventoryUI : MonoBehaviour
         InventoryUI.SetActive(false);
     }
 
+    public void UpdatePlayerCurrency(int _currency)
+    {
+        playerCurrencyText.text = _currency.ToString();
+    }
+
 }
