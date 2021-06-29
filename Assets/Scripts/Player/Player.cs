@@ -13,6 +13,11 @@ public class Player
     {
         Name = "Player1";
     }
+
+    public Player(string _name)
+    {
+        Name = _name;
+    }
 }
 
 [System.Serializable]

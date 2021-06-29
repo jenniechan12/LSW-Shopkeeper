@@ -12,8 +12,8 @@ public class ItemInventoryUI : MonoBehaviour
     private InventoryManager inventoryManager;
 
     // Referencing UI
-    public GameObject InventoryUI;
-    public Button PurchaseButton, SellButton;
+    public GameObject InventoryUI, Cart;
+    public Button PurchaseButton, SellButton, FitButton;
 
     // Spawning Item Buttons
     public GameObject itemInventoryPanel;
@@ -29,7 +29,7 @@ public class ItemInventoryUI : MonoBehaviour
     public Image playerTop, playerBottom, playerShoes;
 
     // Unity Actions
-    private UnityAction SetUpBuy, SetUpSell;
+    private UnityAction SetUpBuy, SetUpSell, SetUpFit;
 
     // Start is called before the first frame update
     void Start()
@@ -45,25 +45,39 @@ public class ItemInventoryUI : MonoBehaviour
         // Set Up UnityAction
         if (SetUpBuy == null) SetUpBuy = new UnityAction(SetUpBuyInventoryUI);
         if (SetUpSell == null) SetUpSell = new UnityAction(SetUpSellInventoryUI);
+        if (SetUpFit == null) SetUpFit = new UnityAction(SetUpFitInventoryUI);
 
         EventManager.StartListening("SetUpBuyItems", SetUpBuy);
         EventManager.StartListening("SetUpSellItems", SetUpSell);
+        EventManager.StartListening("SetUpFittingRoom", SetUpFit);
     }
     void OnDisable()
     {
         EventManager.StopListening("SetUpBuyItems", SetUpBuy);
         EventManager.StopListening("SetUpSellItems", SetUpSell);
+        EventManager.StopListening("SetUpFittingRoom", SetUpFit);
     }
 
     private void SetUpBuyInventoryUI()
     {
         SellButton.gameObject.SetActive(false);
+        FitButton.gameObject.SetActive(false);
         PurchaseButton.gameObject.SetActive(true);
+        Cart.SetActive(true);
     }
     private void SetUpSellInventoryUI()
     {
         SellButton.gameObject.SetActive(true);
+        FitButton.gameObject.SetActive(false);
         PurchaseButton.gameObject.SetActive(false);
+        Cart.SetActive(true);
+    }
+    private void SetUpFitInventoryUI()
+    {
+        SellButton.gameObject.SetActive(false);
+        FitButton.gameObject.SetActive(true);
+        PurchaseButton.gameObject.SetActive(false);
+        Cart.SetActive(false);
     }
 
     public void SetUpClothingInventory(List<Clothes> _clothingsList)

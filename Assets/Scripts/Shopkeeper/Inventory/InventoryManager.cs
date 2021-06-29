@@ -16,8 +16,10 @@ public class InventoryManager : MonoBehaviour
     private List<Clothes> playerCart;
     private PlayerManager playerManager;
 
+    // Unity Action 
     private UnityAction SetUpBuy;
     private UnityAction SetUpSell;
+    private UnityAction SetUpFit;
 
     void Start()
     {
@@ -39,14 +41,17 @@ public class InventoryManager : MonoBehaviour
         // Set Up UnityAction
         if (SetUpBuy == null) SetUpBuy = new UnityAction(SetUpBuyInventory);
         if (SetUpSell == null) SetUpSell = new UnityAction(SetUpSellInventory);
+        if (SetUpFit == null) SetUpFit = new UnityAction(SetUpFitInventory);
 
         EventManager.StartListening("SetUpBuyItems", SetUpBuy);
         EventManager.StartListening("SetUpSellItems", SetUpSell);
+        EventManager.StartListening("SetUpFittingRoom", SetUpFit);
     }
     void OnDisable()
     {
         EventManager.StopListening("SetUpBuyItems", SetUpBuy);
         EventManager.StopListening("SetUpSellItems", SetUpSell);
+        EventManager.StopListening("SetUpFittingRoom", SetUpFit);
     }
 
     private void SetUpBuyInventory()
@@ -62,6 +67,13 @@ public class InventoryManager : MonoBehaviour
         ClothingsList = new List<Clothes>(playerManager.player.Inventory.ClothingsBag);
         itemInventoryUI.SetUpClothingInventory(ClothingsList);
         inventoryType = InventoryType.SELL;
+    }
+    private void SetUpFitInventory()
+    {
+        ClothingsList.Clear();
+        ClothingsList = new List<Clothes>(playerManager.player.Inventory.ClothingsBag);
+        itemInventoryUI.SetUpClothingInventory(ClothingsList);
+        inventoryType = InventoryType.FIT;
     }
 
 
