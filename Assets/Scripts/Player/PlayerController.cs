@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigidBody2D;
     public Animator animator;
 
+
     private Vector2 moveDirection;
     private float moveX, moveY;
     private bool isMovingRight = false;
