@@ -26,6 +26,8 @@ public class ItemInventoryUI : MonoBehaviour
     {
         inventoryManager = GetComponent<InventoryManager>();
         totalPriceText.text = "0";
+
+        Deactivate();
     }
 
     public void SetUpClothingInventory(List<Clothes> _clothingsList)
