@@ -17,8 +17,21 @@ public class ShopkeeperManager : MonoBehaviour
         ShopkeeperDialogue.SetActive(true);
     }
 
-    public void OpenInventory()
+    public void BuyItems()
     {
+        OpenInventory();
+        EventManager.TriggerEvent("SetUpBuyItems");
+    }
+
+    public void SellItems()
+    {
+        OpenInventory();
+        EventManager.TriggerEvent("SetUpSellItems");
+    }
+
+    private void OpenInventory()
+    {
+        Deactivate();
         InventoryGO.SetActive(true);
     }
 

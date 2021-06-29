@@ -30,9 +30,7 @@ public enum ClothingType { HAT, TOP, BOTTOM, DRESSES, SHOES, ACCESSORIES, NONE }
 [System.Serializable]
 public class Clothes
 {
-    // [XmlElement("Sprite")]
-    // public Sprite Icon;
-
+    public Sprite Icon;
     public string Name;
     public string Description;
     public int Price;
@@ -40,16 +38,16 @@ public class Clothes
 
     public Clothes()
     {
-        // Icon = null;
+        Icon = null;
         Name = "White Shirt";
         Description = "Hipster Shirt";
         Price = 10;
         Type = ClothingType.TOP;
     }
 
-    public Clothes(string _name, string _description, int _price, ClothingType _type)
+    public Clothes(Sprite _sprite, string _name, string _description, int _price, ClothingType _type)
     {
-        // Icon = _sprite;
+        Icon = _sprite;
         Name = _name;
         Description = _description;
         Price = _price;
@@ -69,4 +67,11 @@ public class Clothes
             default: return ClothingType.NONE;
         }
     }
+}
+
+[System.Serializable]
+public class ItemSource
+{
+    public string Name;
+    public Sprite Sprite;
 }

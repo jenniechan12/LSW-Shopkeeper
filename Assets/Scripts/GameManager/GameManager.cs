@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Player player;
 
     void Awake()
     {
@@ -14,10 +13,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            player = new Player();
-            player.Inventory = new PlayerInventory();
-            player.Outfit = new PlayerGraphics();
         }
 
         else if (instance != this)

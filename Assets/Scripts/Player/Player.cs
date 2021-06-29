@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Player
 {
     public string Name;
@@ -14,6 +15,7 @@ public class Player
     }
 }
 
+[System.Serializable]
 public class PlayerGraphics
 {
     public Sprite Hat;
@@ -23,6 +25,7 @@ public class PlayerGraphics
     public Sprite Shoe;
 }
 
+[System.Serializable]
 public class PlayerInventory
 {
     public int Currency;
