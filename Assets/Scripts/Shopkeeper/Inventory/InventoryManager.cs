@@ -9,12 +9,13 @@ public class InventoryManager : MonoBehaviour
     public enum InventoryType { BUY, SELL, FIT };
 
     public List<Clothes> ClothingsList;
-    private InventoryType inventoryType;
+    public InventoryType inventoryType;
 
     // Player Informations
     private int totalPrice;
     private List<Clothes> playerCart;
     private PlayerManager playerManager;
+    public PlayerImageManager playerImageManager;
 
     // Unity Action 
     private UnityAction SetUpBuy;
@@ -54,6 +55,7 @@ public class InventoryManager : MonoBehaviour
         EventManager.StopListening("SetUpFittingRoom", SetUpFit);
     }
 
+    // Handle Setting Up Inventory
     private void SetUpBuyInventory()
     {
         ClothingsList.Clear();
@@ -76,7 +78,7 @@ public class InventoryManager : MonoBehaviour
         inventoryType = InventoryType.FIT;
     }
 
-
+    // Handle For Updating Inventory List 
     public void UpdateInventory(ClothingType _type)
     {
         ClothingsList.Clear();
@@ -98,6 +100,7 @@ public class InventoryManager : MonoBehaviour
         itemInventoryUI.UpdateClothingInventory(ClothingsList);
     }
 
+    // Handle For Cart's Transaction
     public void UpdateTotalPrice(int _price)
     {
         totalPrice += _price;
@@ -113,7 +116,6 @@ public class InventoryManager : MonoBehaviour
             itemInventoryUI.PurchaseButton.interactable = true;
         }
     }
-
     public void AddItemToCart(Clothes _item)
     {
         playerCart.Add(_item);
@@ -131,6 +133,17 @@ public class InventoryManager : MonoBehaviour
         EventManager.TriggerEvent("ResetCart");
     }
 
+    // Handle Fitting Room
+    public void UpdateOutfit(Clothes _item)
+    {
+        Sprite sprite = DataManager.instance.GetSprite(_item.Name);
+
+        itemInventoryUI.UpdateInventoryUI(_item);
+        playerImageManager.ChangeOutfit(sprite, _item.Type);
+        playerManager.UpdatePlayerOutfit(playerImageManager.GetOutfit());
+    }
+
+    // Handle Player's Inventory Final Actions
     public void BuyItems()
     {
         int currency = playerManager.player.Inventory.Currency;
@@ -157,6 +170,11 @@ public class InventoryManager : MonoBehaviour
         playerManager.RemoveItemsFromInventory(playerCart);
         itemInventoryUI.UpdatePlayerInventory(playerCart);
         ClearCart();
+    }
+    public void UpdatePlayerOutfit()
+    {
+        EventManager.TriggerEvent("UpdatePlayerGraphics");
+        CloseShop();
     }
 
     public void CloseShop()

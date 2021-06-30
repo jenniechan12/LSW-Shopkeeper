@@ -14,6 +14,11 @@ public class ItemButton : MonoBehaviour
     public GameObject Checkmark;
 
     private bool isSelected;
+    public bool IsSelected
+    {
+        get { return isSelected; }
+        set { isSelected = value; }
+    }
     private InventoryManager inventoryManager;
 
     // Unity Actions
@@ -33,7 +38,6 @@ public class ItemButton : MonoBehaviour
     {
         EventManager.StartListening("ResetCart", ResetButton);
     }
-
     void OnDisable()
     {
         EventManager.StopListening("ResetCart", ResetButton);
@@ -50,10 +54,27 @@ public class ItemButton : MonoBehaviour
 
     public void ItemSelected()
     {
-        isSelected = !isSelected;
+        // Handle for Buying/Selling 
+        if (inventoryManager.inventoryType != InventoryManager.InventoryType.FIT)
+        {
+            isSelected = !isSelected;
 
-        if (isSelected) AddItemToCart();
-        else RemoveItemToCart();
+            if (isSelected) AddItemToCart();
+            else RemoveItemToCart();
+        }
+
+        // Handle Fitting Room
+        else
+        {
+            isSelected = true;
+            UpdateOutfit();
+        }
+
+    }
+    private void UpdateOutfit()
+    {
+        Checkmark.SetActive(true);
+        inventoryManager.UpdateOutfit(Item);
     }
     private void AddItemToCart()
     {

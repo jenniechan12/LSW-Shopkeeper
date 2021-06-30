@@ -11,7 +11,7 @@ public class Player
 
     public Player()
     {
-        Name = "Player1";
+        Name = "Keira";
     }
 
     public Player(string _name)
@@ -23,11 +23,16 @@ public class Player
 [System.Serializable]
 public class PlayerGraphics
 {
-    public Sprite Hat;
     public Sprite Top;
     public Sprite Bottom;
-    public Sprite Dresses;
     public Sprite Shoe;
+
+    public void StarterPack(Sprite _top, Sprite _bottom, Sprite _shoe)
+    {
+        Top = _top;
+        Bottom = _bottom;
+        Shoe = _shoe;
+    }
 }
 
 [System.Serializable]

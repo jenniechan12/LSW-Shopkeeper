@@ -13,12 +13,6 @@ public class PlayerController : MonoBehaviour
     private float moveX, moveY;
     private bool isMovingRight = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

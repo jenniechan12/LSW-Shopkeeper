@@ -73,5 +73,6 @@ public class Clothes
 public class ItemSource
 {
     public string Name;
+    public Sprite Icon;
     public Sprite Sprite;
 }

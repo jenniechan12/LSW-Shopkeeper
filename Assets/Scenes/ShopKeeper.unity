@@ -199,6 +199,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92314120}
   m_CullTransparentMesh: 0
+--- !u!212 &158587125 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2287490655715796660, guid: 1d99a444021111241843f84d358d7b84,
+    type: 3}
+  m_PrefabInstance: {fileID: 244362654224479428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &160518736
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4888791389047820281, guid: d15d8be146dd5e04bb487890acf82eec,
+  m_Sprite: {fileID: -8993754798641939283, guid: 0ed9d8d9dfdf1f24193e93af954193b5,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -1137,6 +1143,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369740454}
   m_CullTransparentMesh: 0
+--- !u!212 &371646475 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2287490655027787836, guid: 1d99a444021111241843f84d358d7b84,
+    type: 3}
+  m_PrefabInstance: {fileID: 244362654224479428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &399375015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8425745962621866018, guid: b67fb6fa956e8e047a997edaa0183710,
+  m_Sprite: {fileID: -4960504232417623935, guid: 27566e18b5c08474d90b6ea38bcfdcfb,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -1576,8 +1588,9 @@ GameObject:
   - component: {fileID: 460349459}
   - component: {fileID: 460349461}
   - component: {fileID: 460349460}
+  - component: {fileID: 460349462}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1598,7 +1611,7 @@ RectTransform:
   - {fileID: 785191558}
   - {fileID: 429377572}
   m_Father: {fileID: 1978158839}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1643,6 +1656,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460349458}
   m_CullTransparentMesh: 0
+--- !u!114 &460349462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460349458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec418d5cc739aa489ea852da724f520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topImage: {fileID: 290303280}
+  bottomImage: {fileID: 785191559}
+  shoeImage: {fileID: 429377573}
 --- !u!1 &464696772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +1822,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468893002}
   m_CullTransparentMesh: 0
+--- !u!212 &487446598 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2287490655792835357, guid: 1d99a444021111241843f84d358d7b84,
+    type: 3}
+  m_PrefabInstance: {fileID: 244362654224479428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &573422291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,7 +2648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2579153273042944714, guid: e800903a0f99ebc4d9bc9cc182e2521f,
+  m_Sprite: {fileID: -2753400752693533138, guid: 052e760d69901464d9a4a229a02165ed,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -7318,7 +7352,7 @@ RectTransform:
   m_Children:
   - {fileID: 160518737}
   m_Father: {fileID: 1978158839}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7673,6 +7707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClothingsList: []
+  inventoryType: 0
+  playerImageManager: {fileID: 0}
 --- !u!1 &1440659806
 GameObject:
   m_ObjectHideFlags: 0
@@ -7805,6 +7841,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440659806}
   m_CullTransparentMesh: 0
+--- !u!1 &1491743517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2287490654832906639, guid: 1d99a444021111241843f84d358d7b84,
+    type: 3}
+  m_PrefabInstance: {fileID: 244362654224479428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1491743522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491743517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d60036d5ba187144a22b675594877f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topSR: {fileID: 158587125}
+  bottomSR: {fileID: 371646475}
+  shoeSR: {fileID: 487446598}
 --- !u!1 &1506981808
 GameObject:
   m_ObjectHideFlags: 0
@@ -8380,22 +8437,40 @@ MonoBehaviour:
   ClothingsDatabase: []
   ClothingsSourceList:
   - Name: Wavy Skirt
-    Sprite: {fileID: 2438226177107253743, guid: e800903a0f99ebc4d9bc9cc182e2521f,
+    Icon: {fileID: 2438226177107253743, guid: e800903a0f99ebc4d9bc9cc182e2521f, type: 3}
+    Sprite: {fileID: 2579153273042944714, guid: e800903a0f99ebc4d9bc9cc182e2521f,
       type: 3}
   - Name: Miniskirt
-    Sprite: {fileID: 8761192591959304788, guid: 95ae007a4e4a03c45922b4257b5ebf21,
+    Icon: {fileID: 8761192591959304788, guid: 95ae007a4e4a03c45922b4257b5ebf21, type: 3}
+    Sprite: {fileID: -1853729665546031405, guid: 95ae007a4e4a03c45922b4257b5ebf21,
       type: 3}
   - Name: Sandal
-    Sprite: {fileID: -8815779489690528241, guid: b67fb6fa956e8e047a997edaa0183710,
+    Icon: {fileID: -8815779489690528241, guid: b67fb6fa956e8e047a997edaa0183710, type: 3}
+    Sprite: {fileID: -8425745962621866018, guid: b67fb6fa956e8e047a997edaa0183710,
       type: 3}
   - Name: Sneaker
-    Sprite: {fileID: -926507133536238750, guid: df064ad5ef4e39846ab19dc59119dabe,
+    Icon: {fileID: -926507133536238750, guid: df064ad5ef4e39846ab19dc59119dabe, type: 3}
+    Sprite: {fileID: -7512455200301975636, guid: df064ad5ef4e39846ab19dc59119dabe,
       type: 3}
   - Name: Blue Top
-    Sprite: {fileID: -5859706019393738930, guid: d15d8be146dd5e04bb487890acf82eec,
+    Icon: {fileID: -5859706019393738930, guid: d15d8be146dd5e04bb487890acf82eec, type: 3}
+    Sprite: {fileID: -4888791389047820281, guid: d15d8be146dd5e04bb487890acf82eec,
       type: 3}
   - Name: Bunny T-shirt
-    Sprite: {fileID: -6220542273064103220, guid: 3366daf6882df524bbbb257da9bee12d,
+    Icon: {fileID: -6220542273064103220, guid: 3366daf6882df524bbbb257da9bee12d, type: 3}
+    Sprite: {fileID: -8285406112051591196, guid: 3366daf6882df524bbbb257da9bee12d,
+      type: 3}
+  - Name: White Shirt
+    Icon: {fileID: -4012750663393760442, guid: 0ed9d8d9dfdf1f24193e93af954193b5, type: 3}
+    Sprite: {fileID: -8993754798641939283, guid: 0ed9d8d9dfdf1f24193e93af954193b5,
+      type: 3}
+  - Name: Blue Jean
+    Icon: {fileID: 4479345440401086271, guid: 052e760d69901464d9a4a229a02165ed, type: 3}
+    Sprite: {fileID: -2753400752693533138, guid: 052e760d69901464d9a4a229a02165ed,
+      type: 3}
+  - Name: White Shoe
+    Icon: {fileID: 351640280474138919, guid: 27566e18b5c08474d90b6ea38bcfdcfb, type: 3}
+    Sprite: {fileID: -4960504232417623935, guid: 27566e18b5c08474d90b6ea38bcfdcfb,
       type: 3}
 --- !u!4 &1824011811
 Transform:
@@ -8438,10 +8513,8 @@ MonoBehaviour:
   player:
     Name: Player1
     Outfit:
-      Hat: {fileID: 0}
       Top: {fileID: 0}
       Bottom: {fileID: 0}
-      Dresses: {fileID: 0}
       Shoe: {fileID: 0}
     Inventory:
       Currency: 10000
@@ -8727,8 +8800,8 @@ RectTransform:
   - {fileID: 772397908}
   - {fileID: 1089251168}
   - {fileID: 1014701024}
-  - {fileID: 460349459}
   - {fileID: 1176958205}
+  - {fileID: 460349459}
   m_Father: {fileID: 2098541792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9366,6 +9439,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2287490655027787836, guid: 1d99a444021111241843f84d358d7b84,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2753400752693533138, guid: 052e760d69901464d9a4a229a02165ed,
+        type: 3}
+    - target: {fileID: 2287490655715796660, guid: 1d99a444021111241843f84d358d7b84,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8993754798641939283, guid: 0ed9d8d9dfdf1f24193e93af954193b5,
+        type: 3}
+    - target: {fileID: 2287490655792835357, guid: 1d99a444021111241843f84d358d7b84,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4960504232417623935, guid: 27566e18b5c08474d90b6ea38bcfdcfb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d99a444021111241843f84d358d7b84, type: 3}
 --- !u!1001 &5826613729003193446

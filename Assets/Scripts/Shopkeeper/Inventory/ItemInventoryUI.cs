@@ -120,7 +120,31 @@ public class ItemInventoryUI : MonoBehaviour
             if (_clothingsList.Contains(itemInfo)) Destroy(item);
         }
     }
+    public void UpdateInventoryUI(Clothes _item)
+    {
+        GameObject item;
+        ItemButton itemButton;
+        bool isFound = false;
 
+        for (int i = 0; i < itemInventoryPanel.transform.childCount; i++)
+        {
+            item = itemInventoryPanel.transform.GetChild(i).gameObject;
+            itemButton = item.GetComponent<ItemButton>();
+
+            if (itemButton.Item == _item && itemButton.IsSelected)
+            {
+                isFound = true;
+                continue;
+            }
+
+            else if (!isFound && itemButton.Item.Type == _item.Type)
+            {
+                itemButton.IsSelected = false;
+                itemButton.Checkmark.SetActive(false);
+            }
+        }
+
+    }
 
 
     private void DestroyInventory()

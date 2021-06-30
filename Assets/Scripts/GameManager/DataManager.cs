@@ -10,6 +10,8 @@ public class DataManager : MonoBehaviour
     public List<Clothes> ClothingsDatabase;
     public List<ItemSource> ClothingsSourceList;
 
+    private List<Clothes> starterPack;
+
     void Awake()
     {
         // Make sure that DataManager exist in game
@@ -19,7 +21,7 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             LoadClothesFile();
-
+            CreateStarterPack();
         }
 
         else if (instance != this)
@@ -31,20 +33,45 @@ public class DataManager : MonoBehaviour
     void LoadClothesFile()
     {
         ClothingsDatabase = new List<Clothes>();
-        ClothingsDatabase.Add(new Clothes(GetSprite("Blue Top"), "Blue Top", "", 250, ClothingType.TOP));
-        ClothingsDatabase.Add(new Clothes(GetSprite("Bunny T-shirt"), "Bunny T-shirt", "", 250, ClothingType.TOP));
-        ClothingsDatabase.Add(new Clothes(GetSprite("Wavy Skirt"), "Wavy Skirt", "", 450, ClothingType.BOTTOM));
-        ClothingsDatabase.Add(new Clothes(GetSprite("Miniskirt"), "Miniskirt", "", 1000, ClothingType.BOTTOM));
-        ClothingsDatabase.Add(new Clothes(GetSprite("Sandal"), "Sandal", "", 1000, ClothingType.SHOES));
-        ClothingsDatabase.Add(new Clothes(GetSprite("Sneaker"), "Sneaker", "", 120, ClothingType.SHOES));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Blue Top"), "Blue Top", "", 250, ClothingType.TOP));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Bunny T-shirt"), "Bunny T-shirt", "", 250, ClothingType.TOP));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Wavy Skirt"), "Wavy Skirt", "", 450, ClothingType.BOTTOM));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Miniskirt"), "Miniskirt", "", 1000, ClothingType.BOTTOM));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Pink Uniform"), "Pink Uniform", "", 2500, ClothingType.DRESSES));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Sandal"), "Sandal", "", 1000, ClothingType.SHOES));
+        ClothingsDatabase.Add(new Clothes(GetSpriteIcon("Sneaker"), "Sneaker", "", 120, ClothingType.SHOES));
 
     }
 
-    private Sprite GetSprite(string _key)
+    private Sprite GetSpriteIcon(string _key)
+    {
+        ItemSource source = ClothingsSourceList.Find(x => x.Name == _key);
+        if (source != null) return source.Icon;
+        else return null;
+    }
+    public Sprite GetSprite(string _key)
     {
         ItemSource source = ClothingsSourceList.Find(x => x.Name == _key);
         if (source != null) return source.Sprite;
         else return null;
+    }
+
+    private void CreateStarterPack()
+    {
+        starterPack = new List<Clothes>();
+        starterPack.Add(new Clothes(GetSpriteIcon("White Tee"), "White Tee", "", 100, ClothingType.TOP));
+        starterPack.Add(new Clothes(GetSpriteIcon("Blue Jean"), "Blue Jean", "", 150, ClothingType.BOTTOM));
+        starterPack.Add(new Clothes(GetSpriteIcon("White Shoe"), "White Shoe", "", 75, ClothingType.SHOES));
+    }
+
+    private void CreateDefaultPlayer(string _name)
+    {
+        Player newPlayer = new Player(_name);
+        newPlayer.Inventory.Currency = 10000;
+        newPlayer.Inventory.ClothingsBag = new List<Clothes>(starterPack);
+        newPlayer.Outfit.StarterPack(GetSprite("White Tee"), GetSprite("Blue Jean"), GetSprite("White Shoe"));
+
+
     }
 
     // void LoadClothesFile()
