@@ -27,6 +27,7 @@ public class ItemInventoryUI : MonoBehaviour
 
     // Player's Clothing Selection
     public Image playerTop, playerBottom, playerShoes;
+    private bool isTopFound, isBottomFound, isShoeFound;
 
     // Unity Actions
     private UnityAction SetUpBuy, SetUpSell, SetUpFit;
@@ -84,12 +85,62 @@ public class ItemInventoryUI : MonoBehaviour
     {
         DestroyInventory();
 
+        isTopFound = false;
+        isBottomFound = false;
+        isShoeFound = false;
+
         for (int i = 0; i < _clothingsList.Count; i++)
         {
             Clothes itemInfo = _clothingsList[i];
             GameObject newItem = Instantiate(itemGO, itemInventoryPanel.transform);
             newItem.GetComponent<ItemButton>().SetUp(itemInfo);
+            SetUpOutfitSelection(itemInfo, newItem.GetComponent<ItemButton>());
         }
+    }
+    private void SetUpOutfitSelection(Clothes _item, ItemButton _button)
+    {
+        if (inventoryManager.inventoryType == InventoryManager.InventoryType.FIT)
+        {
+            if (isTopFound && isBottomFound && isShoeFound) return;
+            else if ((_item.Type == ClothingType.TOP || _item.Type == ClothingType.DRESSES) && isTopFound) return;
+            else if (_item.Type == ClothingType.BOTTOM && isBottomFound) return;
+            else if (_item.Type == ClothingType.SHOES && isShoeFound) return;
+
+            if (_item.Type == ClothingType.TOP || _item.Type == ClothingType.DRESSES)
+            {
+                isTopFound = isSelected(_item);
+                if (isTopFound) { _button.IsSelected = isTopFound; _button.Checkmark.SetActive(isTopFound); }
+            }
+
+            if (_item.Type == ClothingType.BOTTOM)
+            {
+                isBottomFound = isSelected(_item);
+                if (isBottomFound) { _button.IsSelected = isBottomFound; _button.Checkmark.SetActive(isBottomFound); }
+            }
+
+            if (_item.Type == ClothingType.SHOES)
+            {
+                isShoeFound = isSelected(_item);
+                if (isShoeFound) { _button.IsSelected = isShoeFound; _button.Checkmark.SetActive(isShoeFound); }
+            }
+
+        }
+    }
+    private bool isSelected(Clothes _item)
+    {
+        if (_item.Type == ClothingType.TOP || _item.Type == ClothingType.DRESSES)
+        {
+            return PlayerManager.instance.player.Outfit.TopName == _item.Name;
+        }
+        else if (_item.Type == ClothingType.BOTTOM)
+        {
+            return PlayerManager.instance.player.Outfit.BottomName == _item.Name;
+        }
+        else if (_item.Type == ClothingType.SHOES)
+        {
+            return PlayerManager.instance.player.Outfit.ShoeName == _item.Name;
+        }
+        else return false;
     }
 
     public void UpdateClothingInventory(List<Clothes> _clothingsList)
@@ -130,14 +181,32 @@ public class ItemInventoryUI : MonoBehaviour
         {
             item = itemInventoryPanel.transform.GetChild(i).gameObject;
             itemButton = item.GetComponent<ItemButton>();
+            Debug.Log(_item.Type);
 
             if (itemButton.Item == _item && itemButton.IsSelected)
             {
+                Debug.Log(_item.Name);
                 isFound = true;
                 continue;
             }
-
             else if (!isFound && itemButton.Item.Type == _item.Type)
+            {
+                Debug.Log(itemButton.Item.Name);
+                itemButton.IsSelected = false;
+                itemButton.Checkmark.SetActive(false);
+            }
+
+            else if (_item.Type == ClothingType.DRESSES && (itemButton.Item.Type == ClothingType.TOP || itemButton.Item.Type == ClothingType.BOTTOM))
+            {
+                itemButton.IsSelected = false;
+                itemButton.Checkmark.SetActive(false);
+            }
+            else if (_item.Type == ClothingType.TOP && itemButton.Item.Type == ClothingType.DRESSES)
+            {
+                itemButton.IsSelected = false;
+                itemButton.Checkmark.SetActive(false);
+            }
+            else if (_item.Type == ClothingType.BOTTOM && itemButton.Item.Type == ClothingType.DRESSES)
             {
                 itemButton.IsSelected = false;
                 itemButton.Checkmark.SetActive(false);

@@ -14,6 +14,11 @@ public class PlayerGraphicManager : MonoBehaviour
     // Unity Action for UpdateClothes Event
     private UnityAction UpdateClothes;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
         if (UpdateClothes == null) UpdateClothes = new UnityAction(UpdatePlayerClothes);

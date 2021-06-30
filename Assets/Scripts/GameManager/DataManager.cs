@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class DataManager : MonoBehaviour
     public List<ItemSource> ClothingsSourceList;
 
     private List<Clothes> starterPack;
+    private GameObject Player;
 
     void Awake()
     {
@@ -20,15 +22,51 @@ public class DataManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
 
+            Player = GameObject.FindWithTag("Player");
+
             LoadClothesFile();
             CreateStarterPack();
+            LoadPlayerDataFile();
         }
 
         else if (instance != this)
             Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
+
+    public void LoadPlayerDataFile()
+    {
+        Player player = new Player();
+
+        string path = Path.Combine(Application.persistentDataPath, "PlayerData.dat");
+        if (File.Exists(path))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(path, FileMode.Open);
+            player = (Player)bf.Deserialize(file);
+
+            file.Close();
+        }
+
+        else
+        {
+            player = CreateDefaultPlayer();
+            // SavePlayerDataFile();
+        }
+
+        PlayerManager.instance.player = player;
+        EventManager.TriggerEvent("UpdatePlayerGraphics");
+    }
+    public void SavePlayerDataFile()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "Player.dat");
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(path);
+
+        Player player = PlayerManager.instance.player;
+        bf.Serialize(file, player);
+        file.Close();
+    }
 
     void LoadClothesFile()
     {
@@ -59,19 +97,20 @@ public class DataManager : MonoBehaviour
     private void CreateStarterPack()
     {
         starterPack = new List<Clothes>();
-        starterPack.Add(new Clothes(GetSpriteIcon("White Tee"), "White Tee", "", 100, ClothingType.TOP));
+        starterPack.Add(new Clothes(GetSpriteIcon("White Shirt"), "White Shirt", "", 100, ClothingType.TOP));
         starterPack.Add(new Clothes(GetSpriteIcon("Blue Jean"), "Blue Jean", "", 150, ClothingType.BOTTOM));
         starterPack.Add(new Clothes(GetSpriteIcon("White Shoe"), "White Shoe", "", 75, ClothingType.SHOES));
     }
-
-    private void CreateDefaultPlayer(string _name)
+    private Player CreateDefaultPlayer()
     {
-        Player newPlayer = new Player(_name);
+        Player newPlayer = new Player();
+        newPlayer.Inventory = new PlayerInventory();
+        newPlayer.Outfit = new PlayerGraphics();
         newPlayer.Inventory.Currency = 10000;
         newPlayer.Inventory.ClothingsBag = new List<Clothes>(starterPack);
-        newPlayer.Outfit.StarterPack(GetSprite("White Tee"), GetSprite("Blue Jean"), GetSprite("White Shoe"));
+        newPlayer.Outfit.StarterPack(GetSprite("White Shirt"), GetSprite("Blue Jean"), GetSprite("White Shoe"));
 
-
+        return newPlayer;
     }
 
     // void LoadClothesFile()

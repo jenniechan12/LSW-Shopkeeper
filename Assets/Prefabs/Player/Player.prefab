@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1095261028}
   - component: {fileID: 1095261027}
   - component: {fileID: 1095261026}
+  - component: {fileID: 1491743522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,6 +108,21 @@ MonoBehaviour:
   moveSpeed: 2
   rigidBody2D: {fileID: 1095261028}
   animator: {fileID: 9084034846622295472}
+--- !u!114 &1491743522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287490654832906639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d60036d5ba187144a22b675594877f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topSR: {fileID: 2287490655715796660}
+  bottomSR: {fileID: 2287490655027787836}
+  shoeSR: {fileID: 2287490655792835357}
 --- !u!1 &2287490655027787838
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: -1924044193
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2579153273042944714, guid: e800903a0f99ebc4d9bc9cc182e2521f,
+  m_Sprite: {fileID: -2753400752693533138, guid: 052e760d69901464d9a4a229a02165ed,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -294,7 +310,7 @@ SpriteRenderer:
   m_SortingLayerID: -1924044193
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: -4888791389047820281, guid: d15d8be146dd5e04bb487890acf82eec,
+  m_Sprite: {fileID: -8993754798641939283, guid: 0ed9d8d9dfdf1f24193e93af954193b5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -377,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: -1924044193
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -8425745962621866018, guid: b67fb6fa956e8e047a997edaa0183710,
+  m_Sprite: {fileID: -4960504232417623935, guid: 27566e18b5c08474d90b6ea38bcfdcfb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

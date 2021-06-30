@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1263781496129402888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263781496129402890}
+  - component: {fileID: 1263781496129402891}
+  - component: {fileID: 1263781496129402893}
+  - component: {fileID: 1263781496129402892}
+  - component: {fileID: 1263781496129402895}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1263781496129402890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263781496129402888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4627064, y: 0.27181914, z: 133.28711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1263781496129402891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263781496129402888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577aa1ec726068d429f70eb2219fb9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClothingsDatabase: []
+  ClothingsSourceList:
+  - Name: Wavy Skirt
+    Icon: {fileID: 2438226177107253743, guid: e800903a0f99ebc4d9bc9cc182e2521f, type: 3}
+    Sprite: {fileID: 2579153273042944714, guid: e800903a0f99ebc4d9bc9cc182e2521f,
+      type: 3}
+  - Name: Miniskirt
+    Icon: {fileID: 8761192591959304788, guid: 95ae007a4e4a03c45922b4257b5ebf21, type: 3}
+    Sprite: {fileID: -1853729665546031405, guid: 95ae007a4e4a03c45922b4257b5ebf21,
+      type: 3}
+  - Name: Sandal
+    Icon: {fileID: -8815779489690528241, guid: b67fb6fa956e8e047a997edaa0183710, type: 3}
+    Sprite: {fileID: -8425745962621866018, guid: b67fb6fa956e8e047a997edaa0183710,
+      type: 3}
+  - Name: Sneaker
+    Icon: {fileID: -926507133536238750, guid: df064ad5ef4e39846ab19dc59119dabe, type: 3}
+    Sprite: {fileID: -7512455200301975636, guid: df064ad5ef4e39846ab19dc59119dabe,
+      type: 3}
+  - Name: Blue Top
+    Icon: {fileID: -5859706019393738930, guid: d15d8be146dd5e04bb487890acf82eec, type: 3}
+    Sprite: {fileID: -4888791389047820281, guid: d15d8be146dd5e04bb487890acf82eec,
+      type: 3}
+  - Name: Bunny T-shirt
+    Icon: {fileID: -6220542273064103220, guid: 3366daf6882df524bbbb257da9bee12d, type: 3}
+    Sprite: {fileID: -8285406112051591196, guid: 3366daf6882df524bbbb257da9bee12d,
+      type: 3}
+  - Name: White Shirt
+    Icon: {fileID: -4012750663393760442, guid: 0ed9d8d9dfdf1f24193e93af954193b5, type: 3}
+    Sprite: {fileID: -8993754798641939283, guid: 0ed9d8d9dfdf1f24193e93af954193b5,
+      type: 3}
+  - Name: Blue Jean
+    Icon: {fileID: 4479345440401086271, guid: 052e760d69901464d9a4a229a02165ed, type: 3}
+    Sprite: {fileID: -2753400752693533138, guid: 052e760d69901464d9a4a229a02165ed,
+      type: 3}
+  - Name: White Shoe
+    Icon: {fileID: 351640280474138919, guid: 27566e18b5c08474d90b6ea38bcfdcfb, type: 3}
+    Sprite: {fileID: -4960504232417623935, guid: 27566e18b5c08474d90b6ea38bcfdcfb,
+      type: 3}
+  - Name: Pink Uniform
+    Icon: {fileID: 2537263435967097441, guid: ca7e6e0374834ff48adf7ade494799ca, type: 3}
+    Sprite: {fileID: 6841133629975223806, guid: ca7e6e0374834ff48adf7ade494799ca,
+      type: 3}
+--- !u!114 &1263781496129402893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263781496129402888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320b709b67a3dd84d8eda50c12126f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1263781496129402892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263781496129402888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3444bb397c9820a4e9f87dc491af6fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player:
+    Name: Player1
+    Outfit:
+      Top: {fileID: 0}
+      Bottom: {fileID: 0}
+      Shoe: {fileID: 0}
+      TopName: 
+      BottomName: 
+      ShoeName: 
+    Inventory:
+      Currency: 10000
+      ClothingsBag: []
+--- !u!114 &1263781496129402895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263781496129402888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d5c8f1aae47414f8ffd68a24b2e0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
